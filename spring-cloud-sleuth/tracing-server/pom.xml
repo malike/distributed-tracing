@@ -10,6 +10,10 @@
         <version>1.3.3.RELEASE</version>
     </parent>
 
+    <properties>
+        <start-class>st.malike.distributed.tracing.sleuth.server.SpringCloudSleuthMain</start-class>
+        <java.version>1.8</java.version>
+    </properties>
 
 
     <repositories>
