@@ -1,2 +1,2 @@
 # distributed-tracing
-A sample project for blog post on distributed tracing [Zipkin,Sleuth and Opencensus]
+A sample distributed tracing project that uses Spring Cloud Sleuth
