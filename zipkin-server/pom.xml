@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+
+  <parent>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-parent</artifactId>
+    <version>Camden.SR7</version>
+  </parent>
+
+  <properties>
+    <start-class>st.malike.distributed.tracing.sleuth.server.SpringCloudSleuthMain</start-class>
+    <java.version>1.8</java.version>
+  </properties>
+
+
+  <repositories>
+    <repository>
+      <id>spring-snapshots</id>
+      <name>Spring Snapshots</name>
+      <url>http://repo.spring.io/libs-snapshot-local</url>
+    </repository>
+    <repository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>http://repo.spring.io/libs-release-local</url>
+    </repository>
+    <repository>
+      <id>maven</id>
+      <name>mvn</name>
+      <url>http://central.maven.org/maven2/</url>
+    </repository>
+  </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>spring-snapshots</id>
+      <name>Spring Snapshots</name>
+      <url>http://repo.spring.io/libs-snapshot-local</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>spring-milestones</id>
+      <name>Spring Milestones</name>
+      <url>http://repo.spring.io/libs-release-local</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>maven</id>
+      <name>mvn</name>
+      <url>http://central.maven.org/maven2/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>st.malike</groupId>
+  <artifactId>zipkin-distributed-tracing-server</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <description>Zipkin Distributed Tracing Server</description>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>io.zipkin.java</groupId>
+      <artifactId>zipkin-server</artifactId>
+      <version>1.18.0</version>
+    </dependency>
+    <dependency>
+      <groupId>io.zipkin.java</groupId>
+      <artifactId>zipkin-autoconfigure-ui</artifactId>
+      <scope>runtime</scope>
+      <version>1.18.0</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
