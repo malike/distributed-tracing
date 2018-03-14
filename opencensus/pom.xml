@@ -8,7 +8,7 @@
     <start-class>st.malike.distributed.tracing.opencensus.OpencensusMain</start-class>
     <java.version>1.8</java.version>
     <opencensus.version>LATEST</opencensus.version>
-    <opencensus.elasticsearch.exporter.version>0.12.2</opencensus.elasticsearch.exporter.version>
+    <opencensus.elasticsearch.exporter.version>1.0-SNAPSHOT</opencensus.elasticsearch.exporter.version>
   </properties>
 
 
