@@ -46,7 +46,7 @@
     <dependency>
       <groupId>io.opencensus</groupId>
       <artifactId>opencensus-exporter-trace-elasticsearch</artifactId>
-      <version>${opencensus.elasticsearch.trace.version}</version>
+      <version>${opencensus.elasticsearch.exporter.version}</version>
     </dependency>
     <dependency>
       <groupId>io.opencensus</groupId>
