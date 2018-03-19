@@ -1,2 +1,6 @@
 # distributed-tracing
-A sample distributed tracing project that uses Opencensus
+
+Sample distributed tracing project that uses Opencensus.
+
+This project shows how to export trace data to Zipkin and Elasticsearch.
+
