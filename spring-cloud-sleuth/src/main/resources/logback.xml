@@ -15,7 +15,7 @@
             <loggerName />
             <pattern>
                 <pattern>
-                {"serviceName": "sample-app"}
+              {"serviceName": "sample-app"}
                 </pattern>
             </pattern>
             <threadName />

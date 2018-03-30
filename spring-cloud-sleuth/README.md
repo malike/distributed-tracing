@@ -28,6 +28,7 @@ be configured to send to Zipkin.
  a trace having two spans with the first one being `http://localhost:8080/api/dummy/1`
  and the second `http://localhost:8080/api/another/dummy/3`
 
+![One Trace, One Microservice,Two Spans](distributed_tracing_1.png "distributed-trace-zipkin")
 
  Zipkin would be running on this link [http://localhost:9411/](http://localhost:9411/)
 
