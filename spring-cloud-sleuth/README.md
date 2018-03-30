@@ -23,8 +23,14 @@ be configured to send to Zipkin.
  Unfortunately since this is not a communication between microservices you'll only see one
  span per trace.
 
+ If you look at the codes you'll notice there's this funny part of it where I make
+ another rest call to this api `http://localhost:8080/api/another/dummy/3`. This is to simulate
+ a trace having two spans with the first one being `http://localhost:8080/api/dummy/1`
+ and the second `http://localhost:8080/api/another/dummy/3`
+
 
  Zipkin would be running on this link [http://localhost:9411/](http://localhost:9411/)
+
 
 
 ##### ELK Configuration
