@@ -36,4 +36,26 @@ be configured to send to Zipkin.
 
 ##### ELK Configuration
 
+For the ELK we'll need logback together with our ELK stack. By shipping the logs to Elasticsearch via
+Logback we can visualize the trace.
 
+By using the logging pattern `logging.pattern.console="%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"`
+and logback config to ship to logstash. Trace data is sent to with elasticsearch and with the microservice
+name as part of each trace data.
+
+Logstash is started with a simple input output configuration
+   `./logstash -e 'input { tcp { port => 5000 codec => "json" } } output { elasticsearch { hosts => ["localhost"] index => "distributed-trace-%{serviceName}"}}'`
+
+With each microservice storing data into it's own index of elasticsearch but preceding with `distributed-trace-` to enable
+ us search accros indexes in elasticsearch and kibana.
+
+ After adding `distributed*` index in kibana we can visualize trace data in kibana.
+
+![kibana](distributed_tracing_2.png "distributed-trace-kibana")
+
+
+I created a sample data based on the trace data to show (near)real time requests,number of host and active
+ microservices in the past hour on kibana. You can do more with the trace data in there if you know how to use kibana.
+
+
+ ![kibana dashboard](distributed_tracing_2.png "distributed-trace-kibana-dashboard")
