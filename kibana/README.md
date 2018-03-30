@@ -4,4 +4,9 @@ Sample Kibana widgets to visualize trace data from Opencensus and Spring Cloud S
 
 To import widgets follow [this](https://www.elastic.co/guide/en/kibana/current/loading-a-saved-dashboard.html).
 
+Add this as index _"distributed*"_.
+
+`spring-cloud-distributed-tracing-sample-dashboard` would give you dashboards
+for Spring Cloud Sleuth project.
+
 
