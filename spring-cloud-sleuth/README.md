@@ -1,4 +1,4 @@
-# distributed-tracing
+# distributed-tracing with spring cloud sleuth
 
 A sample distributed tracing project that uses Spring Cloud Sleuth
 that uses Logstash to export trace data to Elasticsearch and can also
@@ -39,12 +39,16 @@ be configured to send to Zipkin.
 For the ELK we'll need logback together with our ELK stack. By shipping the logs to Elasticsearch via
 Logback we can visualize the trace.
 
-By using the logging pattern `logging.pattern.console="%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"`
+By using the logging pattern,
+
+  `logging.pattern.console="%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"`
+
 and logback config to ship to logstash. Trace data is sent to with elasticsearch and with the microservice
 name as part of each trace data.
 
 Logstash is started with a simple input output configuration
-   `./logstash -e 'input { tcp { port => 5000 codec => "json" } } output { elasticsearch { hosts => ["localhost"] index => "distributed-trace-%{serviceName}"}}'`
+
+    `./logstash -e 'input { tcp { port => 5000 codec => "json" } } output { elasticsearch { hosts => ["localhost"] index => "distributed-trace-%{serviceName}"}}'`
 
 With each microservice storing data into it's own index of elasticsearch but preceding with `distributed-trace-` to enable
  us search accros indexes in elasticsearch and kibana.
