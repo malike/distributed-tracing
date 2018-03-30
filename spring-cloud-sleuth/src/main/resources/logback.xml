@@ -1,5 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<!--<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">-->
+    <!--<encoder>-->
+        <!--<pattern>%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([${springAppName:-},%X{X-B3-TraceId:-},%X{X-B3-SpanId:-},%X{X-Span-Export:-}]){yellow} %clr(${PID:- }){magenta} %clr(-&#45;&#45;){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}</pattern>-->
+    <!--</encoder>-->
+<!--</appender>-->
 <appender name="STASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-    <destination>localhost:5000</destination>
+    <destination>127.0.0.1:5000</destination>
     <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
         <providers>
             <mdc />
@@ -8,7 +15,7 @@
             <loggerName />
             <pattern>
                 <pattern>
-              {"serviceName": "sample-sleuth-app"}
+              {"serviceName": "sample-app"}
                 </pattern>
             </pattern>
             <threadName />
@@ -18,3 +25,4 @@
         </providers>
     </encoder>
 </appender>
+   </configuration>

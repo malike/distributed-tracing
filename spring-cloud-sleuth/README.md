@@ -19,5 +19,14 @@ be configured to send to Zipkin.
 
 ##### Discovering Trace on Zipkin
 
+`curl http://localhost:8080/api/dummy/1` would generate trace for dummy service
+ Unfortunately since this is not a communication between microservices you'll only see one
+ span per trace.
+
+
+ Zipkin would be running on this link [http://localhost:9411/](http://localhost:9411/)
+
+
+##### ELK Configuration
 
 
