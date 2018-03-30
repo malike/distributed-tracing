@@ -58,4 +58,4 @@ I created a sample data based on the trace data to show (near)real time requests
  microservices in the past hour on kibana. You can do more with the trace data in there if you know how to use kibana.
 
 
- ![kibana dashboard](distributed_tracing_2.png "distributed-trace-kibana-dashboard")
+ ![kibana dashboard](distributed_tracing_3.png "distributed-trace-kibana-dashboard")
