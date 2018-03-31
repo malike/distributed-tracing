@@ -6,7 +6,7 @@ be configured to send to Zipkin.
 
 ## Note
 
-##### Zipkin Configuration
+### Zipkin Configuration
 
 `spring.application.name=sample-app` add this to your application for
  Zipkin to identify the microservice. With out this it would tag the
@@ -34,7 +34,7 @@ be configured to send to Zipkin.
 
 
 
-##### ELK Configuration
+### ELK Configuration
 
 For the ELK we'll need logback together with our ELK stack. By shipping the logs to Elasticsearch via
 Logback we can visualize the trace.
@@ -51,11 +51,14 @@ Logstash is started with a simple input output configuration
     `./logstash -e 'input { tcp { port => 5000 codec => "json" } } output { elasticsearch { hosts => ["localhost"] index => "distributed-trace-%{serviceName}"}}'`
 
 With each microservice storing data into it's own index of elasticsearch but preceding with `distributed-trace-` to enable
- us search accros indexes in elasticsearch and kibana.
+ us search across indexes in elasticsearch and kibana.
+
+##### Discovering trace on kibana
 
  After adding `distributed*` index in kibana we can visualize trace data in kibana.
 
 ![kibana](distributed_tracing_2.png "distributed-trace-kibana")
+
 
 
 I created a sample data based on the trace data to show (near)real time requests,number of host and active
