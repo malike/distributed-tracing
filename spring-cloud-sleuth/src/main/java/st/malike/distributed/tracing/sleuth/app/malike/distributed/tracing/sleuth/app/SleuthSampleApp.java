@@ -3,7 +3,6 @@ package st.malike.distributed.tracing.sleuth.app.malike.distributed.tracing.sleu
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
@@ -23,8 +22,5 @@ public class SleuthSampleApp {
     return new RestTemplate();
   }
 
-  @Bean
-  public AlwaysSampler defaultSampler() {
-    return new AlwaysSampler();
-  }
+
 }
