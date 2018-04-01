@@ -23,9 +23,14 @@
       <url>http://repo.spring.io/libs-snapshot-local</url>
     </repository>
     <repository>
+      <id>spring-release</id>
+      <name>Spring release</name>
+      <url>http://repo.spring.io/libs-release-local</url>
+    </repository>
+    <repository>
       <id>spring-milestones</id>
       <name>Spring Milestones</name>
-      <url>http://repo.spring.io/libs-release-local</url>
+      <url>https://repo.spring.io/milestone</url>
     </repository>
     <repository>
       <id>maven</id>
@@ -46,6 +51,14 @@
     <pluginRepository>
       <id>spring-milestones</id>
       <name>Spring Milestones</name>
+      <url>https://repo.spring.io/milestone</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>spring-release</id>
+      <name>Spring release</name>
       <url>http://repo.spring.io/libs-release-local</url>
       <snapshots>
         <enabled>false</enabled>
