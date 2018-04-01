@@ -3,6 +3,8 @@
 Sample distributed tracing project that uses Opencensus.
 
 This project shows how to export trace data to Zipkin and Elasticsearch.
+It is based on the _'helloword'_  example from
+[Opencensus repo](https://github.com/census-instrumentation/opencensus-java/tree/master/examples/src/main/java/io/opencensus/examples/helloworld).
 
 
 ## Note
