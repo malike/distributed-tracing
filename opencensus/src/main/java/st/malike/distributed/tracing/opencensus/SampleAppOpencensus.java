@@ -2,7 +2,6 @@ package st.malike.distributed.tracing.opencensus;
 
 import io.opencensus.common.Scope;
 import io.opencensus.exporter.trace.elasticsearch.exception.InvalidElasticsearchConfigException;
-import io.opencensus.exporter.trace.logging.LoggingTraceExporter;
 import io.opencensus.exporter.trace.zipkin.ZipkinTraceExporter;
 import io.opencensus.stats.Aggregation;
 import io.opencensus.stats.BucketBoundaries;
@@ -39,25 +38,6 @@ public class SampleAppOpencensus {
   private final static String INDEX_FOR_TRACE= "opencensus";
   private final static String TYPE_FOR_TRACE= "trace";
   private final static String MICROSERVICE= "sample-opencensus";
-
-
-//  public static void main(String[] args) throws Exception {
-//
-//    TagContextBuilder tagContextBuilder =
-//        tagger.currentBuilder().put(MICROSERVICE, TagValue.create("mobile-ios9.3.5"));
-//    SpanBuilder spanBuilder =
-//        tracer
-//            .spanBuilder("my.org/ProcessVideo")
-//            .setRecordEvents(true)
-//            .setSampler(Samplers.alwaysSample());
-//
-//    ElasticsearchConfiguration elasticsearchConfiguration
-//        = new ElasticsearchConfiguration(null, null,ELASTIC_SEARCH_URL,
-//        INDEX_FOR_TRACE,TYPE_FOR_TRACE);
-//    ElasticsearchTraceExporter.createAndRegister(elasticsearchConfiguration);
-//
-//  }
-
 
 
 
@@ -100,7 +80,7 @@ public class SampleAppOpencensus {
             .setRecordEvents(true)
             .setSampler(Samplers.alwaysSample());
     viewManager.registerView(VIDEO_SIZE_VIEW);
-    LoggingTraceExporter.register();
+//    LoggingTraceExporter.register();
     ZipkinTraceExporter.createAndRegister("http://localhost:9411/api/v2/spans"
         ,MICROSERVICE);
 //    ElasticsearchConfiguration elasticsearchConfiguration
@@ -125,13 +105,13 @@ public class SampleAppOpencensus {
       logger.severe(e.getMessage());
     }
 
-    logger.info("Wait longer than the reporting duration...");
+//    logger.info("Wait longer than the reporting duration...");
     // Wait for a duration longer than reporting duration (5s) to ensure spans are exported.
     // TODO(songya): remove the gap once we add a shutdown hook for exporting unflushed spans.
     Thread.sleep(5100);
     ViewData viewData = viewManager.getView(VIDEO_SIZE_VIEW_NAME);
-    logger.info(
-        String.format("Recorded stats for %s:\n %s", VIDEO_SIZE_VIEW_NAME.asString(), viewData));
+//    logger.info(
+//        String.format("Recorded stats for %s:\n %s", VIDEO_SIZE_VIEW_NAME.asString(), viewData));
   }
 
 }
