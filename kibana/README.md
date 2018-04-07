@@ -9,4 +9,9 @@ Add this as index _"distributed*"_.
 `spring-cloud-distributed-tracing-sample-dashboard` would give you dashboards
 for Spring Cloud Sleuth project.
 
+For Opencenus, the index is Add this as index _"opencensus"_. and the dashboard with the widgets are
+in the file `distributed-tracing-opencensus.json`
+
+
+
 
