@@ -32,7 +32,7 @@ Traces can be sent to Zipkin. The current project supports Zipkin V2 API.
 
 Read more on using Opencensus with Zipkin [here](https://github.com/census-instrumentation/opencensus-java/tree/master/exporters/trace/zipkin)
 
-### Discovering Trace on Zipkin
+##### Discovering Trace on Zipkin
 
 ![Trace Opencensus to Zipkin](distributed_tracing_opencensus.png "distributed-trace-zipkin")
 
@@ -63,10 +63,10 @@ This is an Elasticsearch exporter I wrote for Opencensus. Specify your Elasticse
  ..and trace
 
 
-#### Discovering trace on kibana
+##### Discovering trace on kibana
 
 To visualize test trace data in Elasticsearch with Kibana, I've created a sample dashboard as well as a screenshot
-to see all trace event from Kibana dsicovery page.
+to see all trace event from Kibana discovery page.
 
 ![Trace Opencensus to ELK](distributed_tracing_elk_discover.png "distributed-trace-elk")
 
