@@ -37,7 +37,7 @@ public class SampleAppOpencensus {
     childSpan.end();
     rootSpan.addAnnotation("Annotation to the root Span after child is ended.");
     rootSpan.end();
-    Thread.sleep(5000);
+    Thread.sleep(500);
   }
 
   /**
@@ -48,11 +48,15 @@ public class SampleAppOpencensus {
   public static void main(String[] args) throws Exception{
     ZipkinTraceExporter.createAndRegister(ZIPKIN_URL,MICROSERVICE);
     ElasticsearchConfiguration elasticsearchConfiguration
-        = new ElasticsearchConfiguration(null, null,ELASTIC_SEARCH_URL,
+        = new ElasticsearchConfiguration(MICROSERVICE,null, null,ELASTIC_SEARCH_URL,
         INDEX_FOR_TRACE,TYPE_FOR_TRACE);
     ElasticsearchTraceExporter.createAndRegister(elasticsearchConfiguration);
     LoggingTraceExporter.register();
-    doWork();
+    int i =0;
+    while(i < 200) { //generate enough data to visualize
+      doWork();
+      i++;
+    }
 
   }
 

@@ -11,6 +11,9 @@ It is based on the _'helloword'_  example from
 
 ### Zipkin Configuration
 
+private final static String MICROSERVICE= "sample-opencensus";
+
+
     <dependency>
           <groupId>io.opencensus</groupId>
           <artifactId>opencensus-exporter-trace-zipkin</artifactId>
@@ -19,6 +22,9 @@ It is based on the _'helloword'_  example from
 
 
 With a simple configuration like :
+
+    private final static String MICROSERVICE= "sample-opencensus";
+    private final static String ZIPKIN_URL= "http://localhost:9411/api/v2/spans";
 
     ZipkinTraceExporter.createAndRegister(ZIPKIN_URL,MICROSERVICE);
 
@@ -42,12 +48,19 @@ To use Opencensus to export to Elasticsearch requires
 
 This is an Elasticsearch exporter I wrote for Opencensus. Specify your Elasticsearch configuration
 
+    private final static String ELASTIC_SEARCH_URL= "http://localhost:9200";
+      private final static String INDEX_FOR_TRACE= "opencensus";
+      private final static String TYPE_FOR_TRACE= "trace";
+      private final static String MICROSERVICE= "sample-opencensus";
+
+
+
     ElasticsearchConfiguration elasticsearchConfiguration
-            = new ElasticsearchConfiguration(null, null,ELASTIC_SEARCH_URL,
+            = new ElasticsearchConfiguration(MICROSERVICE,null, null,ELASTIC_SEARCH_URL,
             INDEX_FOR_TRACE,TYPE_FOR_TRACE);
     ElasticsearchTraceExporter.createAndRegister(elasticsearchConfiguration);
 
- ..and Trace
+ ..and trace
 
 
 #### Discovering trace on kibana
@@ -55,3 +68,10 @@ This is an Elasticsearch exporter I wrote for Opencensus. Specify your Elasticse
 To visualize test trace data in Elasticsearch with Kibana, I've created a sample dashboard as well as a screenshot
 to see all trace event from Kibana dsicovery page.
 
+![Trace Opencensus to ELK](distributed_tracing_elk_discover.png "distributed-trace-elk")
+
+
+A sample dashboard of trace data
+
+
+ ![Trace Opencensus to ELK Dashboard](distributed_tracing_opencensus_elk_dashboard.png "distributed-trace-dashboard")
