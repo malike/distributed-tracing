@@ -46,11 +46,16 @@ public class SampleAppOpencensus {
    * @param args the main arguments.
    */
   public static void main(String[] args) throws Exception{
+    //exports to zipkin
     ZipkinTraceExporter.createAndRegister(ZIPKIN_URL,MICROSERVICE);
+
+    //exports to elasticsearch
     ElasticsearchConfiguration elasticsearchConfiguration
         = new ElasticsearchConfiguration(MICROSERVICE,null, null,ELASTIC_SEARCH_URL,
         INDEX_FOR_TRACE,TYPE_FOR_TRACE);
     ElasticsearchTraceExporter.createAndRegister(elasticsearchConfiguration);
+
+    //exports to logs
     LoggingTraceExporter.register();
     int i =0;
     while(i < 200) { //generate enough data to visualize
