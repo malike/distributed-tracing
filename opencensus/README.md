@@ -48,7 +48,6 @@ To use Opencensus to export to Elasticsearch requires
 
 This is an Elasticsearch exporter I wrote for Opencensus. Specify your Elasticsearch configuration
 
-    The ElasticsearchConfig is the configurations required by the exporter.
 
    ```private final static String ELASTIC_SEARCH_URL= "http://localhost:9200";
       private final static String INDEX_FOR_TRACE= "opencensus";
