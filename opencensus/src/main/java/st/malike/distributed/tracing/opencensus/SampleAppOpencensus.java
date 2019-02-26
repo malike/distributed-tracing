@@ -1,6 +1,6 @@
 package st.malike.distributed.tracing.opencensus;
 
-import io.opencensus.exporter.trace.elasticsearch.ElasticsearchConfiguration;
+import io.opencensus.exporter.trace.elasticsearch.ElasticsearchTraceConfiguration;
 import io.opencensus.exporter.trace.elasticsearch.ElasticsearchTraceExporter;
 import io.opencensus.exporter.trace.logging.LoggingTraceExporter;
 import io.opencensus.exporter.trace.zipkin.ZipkinTraceExporter;
@@ -50,11 +50,11 @@ public class SampleAppOpencensus {
     ZipkinTraceExporter.createAndRegister(ZIPKIN_URL,MICROSERVICE);
 
     //exports to elasticsearch
-    ElasticsearchConfiguration elasticsearchConfiguration
-        = ElasticsearchConfiguration.builder().setAppName(MICROSERVICE)
+    ElasticsearchTraceConfiguration elasticsearchTraceConfiguration
+        = ElasticsearchTraceConfiguration.builder().setAppName(MICROSERVICE)
         .setElasticsearchUrl(ELASTIC_SEARCH_URL)
         .setElasticsearchIndex(INDEX_FOR_TRACE).setElasticsearchType(TYPE_FOR_TRACE).build();
-    ElasticsearchTraceExporter.createAndRegister(elasticsearchConfiguration);
+    ElasticsearchTraceExporter.createAndRegister(elasticsearchTraceConfiguration);
 
     //exports to logs
     LoggingTraceExporter.register();

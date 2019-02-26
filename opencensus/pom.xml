@@ -7,8 +7,8 @@
   <properties>
     <start-class>st.malike.distributed.tracing.opencensus.OpencensusMain</start-class>
     <java.version>1.8</java.version>
-    <opencensus.version>0.12.2</opencensus.version>
-    <opencensus.elasticsearch.exporter.version>0.13.0-SNAPSHOT</opencensus.elasticsearch.exporter.version>
+    <opencensus.version>0.19.2</opencensus.version>
+    <opencensus.elasticsearch.exporter.version>0.19.3</opencensus.elasticsearch.exporter.version>
   </properties>
 
 
@@ -46,7 +46,9 @@
     <dependency>
       <groupId>io.opencensus</groupId>
       <artifactId>opencensus-exporter-trace-elasticsearch</artifactId>
-      <version>${opencensus.elasticsearch.exporter.version}</version>
+      <scope>system</scope>
+      <version>0.20.0-SNAPSHOT</version>
+      <systemPath>${project.basedir}/libs/opencensus-exporter-trace-elasticsearch-0.20.0-SNAPSHOT.jar</systemPath>
     </dependency>
 
     <dependency>
