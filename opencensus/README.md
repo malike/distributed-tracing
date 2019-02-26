@@ -13,20 +13,22 @@ It is based on the _'helloword'_  example from
 
 private final static String MICROSERVICE= "sample-opencensus";
 
-
-    <dependency>
-          <groupId>io.opencensus</groupId>
-          <artifactId>opencensus-exporter-trace-zipkin</artifactId>
-          <version>0.12.2</version>
-        </dependency>
-
+```xml
+<dependency>
+  <groupId>io.opencensus</groupId>
+  <artifactId>opencensus-exporter-trace-zipkin</artifactId>
+  <version>0.12.2</version>
+</dependency>
+```
 
 With a simple configuration like :
 
-    private final static String MICROSERVICE= "sample-opencensus";
-    private final static String ZIPKIN_URL= "http://localhost:9411/api/v2/spans";
+```java
+private final static String MICROSERVICE= "sample-opencensus";
+private final static String ZIPKIN_URL= "http://localhost:9411/api/v2/spans";
 
-    ZipkinTraceExporter.createAndRegister(ZIPKIN_URL,MICROSERVICE);
+ZipkinTraceExporter.createAndRegister(ZIPKIN_URL,MICROSERVICE);
+```
 
 Traces can be sent to Zipkin. The current project supports Zipkin V2 API.
 
@@ -40,25 +42,30 @@ Read more on using Opencensus with Zipkin [here](https://github.com/census-instr
 
 To use Opencensus to export to Elasticsearch requires
 
-      <dependency>
-            <groupId>io.opencensus</groupId>
-            <artifactId>opencensus-exporter-trace-elasticsearch</artifactId>
-            <version>${opencensus.elasticsearch.exporter.version}</version>
-          </dependency>
+```yml
 
+<dependency>
+  <groupId>io.opencensus</groupId>
+  <artifactId>opencensus-exporter-trace-elasticsearch</artifactId>
+  <version>${opencensus.elasticsearch.exporter.version}</version>
+</dependency>
+
+```
 This is an Elasticsearch exporter I wrote for Opencensus. Specify your Elasticsearch configuration
 
 
-   ```private final static String ELASTIC_SEARCH_URL= "http://localhost:9200";
-      private final static String INDEX_FOR_TRACE= "opencensus";
-      private final static String TYPE_FOR_TRACE= "trace";
-      private final static String MICROSERVICE= "sample-opencensus";
+```java
+private final static String ELASTIC_SEARCH_URL= "http://localhost:9200";
+private final static String INDEX_FOR_TRACE= "opencensus";
+private final static String TYPE_FOR_TRACE= "trace";
+private final static String APP_NAME= "sample-opencensus";
 
-    ElasticsearchConfiguration elasticsearchConfiguration
-            = ElasticsearchConfiguration.builder().setAppName(MICROSERVICE)
-            .setElasticsearchUrl(ELASTIC_SEARCH_URL)
-            .setElasticsearchIndex(INDEX_FOR_TRACE).setElasticsearchType(TYPE_FOR_TRACE).build();
-    ElasticsearchTraceExporter.createAndRegister(elasticsearchConfiguration);
+public static void main(String[] args) throws Exception{
+      
+  ElasticsearchTraceConfiguration elasticsearchTraceConfiguration = ElasticsearchTraceConfiguration.builder().setAppName(MICROSERVICE).setElasticsearchUrl(ELASTIC_SEARCH_URL).setElasticsearchIndex(INDEX_FOR_TRACE).setElasticsearchType(TYPE_FOR_TRACE).build();
+  ElasticsearchTraceExporter.createAndRegister(elasticsearchTraceConfiguration);
+    
+}
 ```
 
 
