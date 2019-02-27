@@ -53,8 +53,13 @@ public class SampleAppOpencensus {
     ElasticsearchTraceConfiguration elasticsearchTraceConfiguration
         = ElasticsearchTraceConfiguration.builder().setAppName(MICROSERVICE)
         .setElasticsearchUrl(ELASTIC_SEARCH_URL)
-        .setElasticsearchIndex(INDEX_FOR_TRACE).setElasticsearchType(TYPE_FOR_TRACE).build();
+        .setElasticsearchIndex(INDEX_FOR_TRACE).setElasticsearchType(TYPE_FOR_TRACE)
+        .setUserName("elastic")
+        .setPassword("changeme")
+        .build();
     ElasticsearchTraceExporter.createAndRegister(elasticsearchTraceConfiguration);
+
+
 
     //exports to logs
     LoggingTraceExporter.register();
